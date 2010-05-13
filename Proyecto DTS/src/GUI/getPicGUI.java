@@ -232,6 +232,7 @@ public class getPicGUI extends javax.swing.JFrame {
 		if(picAction == null) {
 			picAction = new AbstractAction(" ", null) {
 				public void actionPerformed(ActionEvent evt) {
+					statusBar.setText("");
 					
 					try {
 						manager.Escribir("GET_PIC" + "\n");
@@ -283,6 +284,7 @@ public class getPicGUI extends javax.swing.JFrame {
 		if(saveImgAction == null) {
 			saveImgAction = new AbstractAction("", null) {
 				public void actionPerformed(ActionEvent evt) {
+					statusBar.setText("");
 					FileOutputStream fos;
 					try {
 						fos = new FileOutputStream("data/xx3.jpg");
