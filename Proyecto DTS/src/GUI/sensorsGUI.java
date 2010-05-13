@@ -388,6 +388,7 @@ public class sensorsGUI extends javax.swing.JFrame {
 			jButton2.setIcon(new ImageIcon("data/images/buttons/history.png"));
 			jButton2.setContentAreaFilled(false);
 			jButton2.setOpaque(false);
+			jButton2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 		}
 		return jButton2;
 	}
