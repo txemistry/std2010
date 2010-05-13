@@ -64,6 +64,11 @@ public class sensorsGUI extends javax.swing.JFrame {
 	private JPanel up;
 	private static sensorsGUI window;
 	private static SocketManager manager;
+	private JLabel jLabel5;
+	private JLabel jLabel4;
+	private JLabel dialog;
+	private JPanel jPanel2;
+	private JPanel jPanel1;
 	private JPanel RIGHT;
 	private JPanel LEFT;
 	private JButton jButton3;
@@ -120,12 +125,27 @@ public class sensorsGUI extends javax.swing.JFrame {
 				}
 
 			}
-			System.out.println(manager.Leer());
+			statusBar.setText(manager.Leer());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+	}
+	
+	private void cleanTable()
+	{
+		
+		DefaultTableModel tablareh = (DefaultTableModel)table2.getModel();
+		int rows=tablareh.getRowCount();
+		for (int i=0;i<rows;i++)
+		{
+			for (int x=0;x<=3;x++)
+			{
+				tablareh.setValueAt("", i, x);
+			}
+		}
+	
 	}
 	
 	public void setGUI(sensorsGUI window)
@@ -363,11 +383,10 @@ public class sensorsGUI extends javax.swing.JFrame {
 		if(jButton2 == null) {
 			jButton2 = new JButton();
 			jButton2.setText(" ");
-			jButton2.setBounds(224, 101, 149, 40);
+			jButton2.setBounds(171, 12, 155, 38);
 			jButton2.setAction(getHistory());
 			jButton2.setIcon(new ImageIcon("data/images/buttons/history.png"));
 			jButton2.setContentAreaFilled(false);
-			jButton2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 			jButton2.setOpaque(false);
 		}
 		return jButton2;
@@ -388,6 +407,7 @@ public class sensorsGUI extends javax.swing.JFrame {
 		if(currentValue == null) {
 			currentValue = new AbstractAction("", null) {
 				public void actionPerformed(ActionEvent evt) {
+					statusBar.setText("");
 					try {
 						int row= table.getSelectedRow();
 						String id;
@@ -512,6 +532,8 @@ public class sensorsGUI extends javax.swing.JFrame {
 		if(history == null) {
 			history = new AbstractAction(" ", null) {
 				public void actionPerformed(ActionEvent evt) {
+					statusBar.setText("");
+					cleanTable();
 					String resultado;
 					try {
 						int row= table.getSelectedRow();
@@ -551,7 +573,7 @@ public class sensorsGUI extends javax.swing.JFrame {
 										tablareh.setValueAt(values[x],i,x);
 									}
 								}
-								System.out.println(manager.Leer());
+								statusBar.setText(manager.Leer());
 							}
 							
 							
@@ -607,6 +629,7 @@ public class sensorsGUI extends javax.swing.JFrame {
 		if(ON == null) {
 			ON = new AbstractAction(" ", null) {
 				public void actionPerformed(ActionEvent evt) {
+					statusBar.setText("");
 					try {
 						int row= table.getSelectedRow();
 						String id;
@@ -641,6 +664,7 @@ public class sensorsGUI extends javax.swing.JFrame {
 		if(OFF == null) {
 			OFF = new AbstractAction(" ", null) {
 				public void actionPerformed(ActionEvent evt) {
+					statusBar.setText("");
 					try {
 						int row= table.getSelectedRow();
 						String id;
@@ -684,10 +708,12 @@ public class sensorsGUI extends javax.swing.JFrame {
 	private JPanel getLEFT() {
 		if(LEFT == null) {
 			LEFT = new JPanel();
-			LEFT.setPreferredSize(new java.awt.Dimension(393, 146));
-			LEFT.setLayout(null);
+			BoxLayout LEFTLayout = new BoxLayout(LEFT, javax.swing.BoxLayout.Y_AXIS);
+			LEFT.setPreferredSize(new java.awt.Dimension(334, 146));
+			LEFT.setLayout(LEFTLayout);
 			LEFT.setOpaque(false);
-			LEFT.add(getJButton2());
+			LEFT.add(getJPanel1());
+			LEFT.add(getJPanel2());
 		}
 		return LEFT;
 	}
@@ -695,9 +721,65 @@ public class sensorsGUI extends javax.swing.JFrame {
 	private JPanel getRIGHT() {
 		if(RIGHT == null) {
 			RIGHT = new JPanel();
+			RIGHT.setOpaque(false);
 			RIGHT.add(getJScrollPane2());
 		}
 		return RIGHT;
+	}
+	
+	private JPanel getJPanel1() {
+		if(jPanel1 == null) {
+			jPanel1 = new JPanel();
+			jPanel1.setOpaque(false);
+			jPanel1.setPreferredSize(new java.awt.Dimension(331, 98));
+			jPanel1.setLayout(null);
+			jPanel1.setBorder(new LineBorder(new java.awt.Color(0,0,0), 1, false));
+			jPanel1.add(getDialog());
+			jPanel1.add(getJLabel4());
+			jPanel1.add(getJLabel5());
+		}
+		return jPanel1;
+	}
+	
+	private JPanel getJPanel2() {
+		if(jPanel2 == null) {
+			jPanel2 = new JPanel();
+			jPanel2.setOpaque(false);
+			jPanel2.setPreferredSize(new java.awt.Dimension(331, 59));
+			jPanel2.setLayout(null);
+			jPanel2.add(getJButton2());
+		}
+		return jPanel2;
+	}
+	
+	private JLabel getDialog() {
+		if(dialog == null) {
+			dialog = new JLabel();
+			dialog.setText("Choose a sensor in the table above");
+			dialog.setFont(new java.awt.Font("Dialog",3,16));
+			dialog.setBounds(21, 6, 283, 19);
+		}
+		return dialog;
+	}
+	
+	private JLabel getJLabel4() {
+		if(jLabel4 == null) {
+			jLabel4 = new JLabel();
+			jLabel4.setText("Then, choose an action to perform");
+			jLabel4.setFont(new java.awt.Font("Dialog",3,16));
+			jLabel4.setBounds(21, 31, 283, 20);
+		}
+		return jLabel4;
+	}
+	
+	private JLabel getJLabel5() {
+		if(jLabel5 == null) {
+			jLabel5 = new JLabel();
+			jLabel5.setText("Check the StatusBar for errors");
+			jLabel5.setFont(new java.awt.Font("Dialog",3,16));
+			jLabel5.setBounds(21, 57, 283, 21);
+		}
+		return jLabel5;
 	}
 
 }
