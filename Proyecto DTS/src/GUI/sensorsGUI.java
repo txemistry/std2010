@@ -423,6 +423,7 @@ public class sensorsGUI extends javax.swing.JFrame {
 						String[] values=currentValue.split(";");
 						if (values[0].contains("114"))
 						{
+							statusBar.setText(values[0]);
 							dateField.setText(values[1]);
 							horaField.setText(values[2]);
 							coordField.setText(values[3]);
