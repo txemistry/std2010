@@ -111,11 +111,30 @@ public class client {
 			manager.Escribir("GET_PIC" + "\n");
 			
 			System.out.println(manager.Leer());
-            int tam =Integer.parseInt(manager.Leer());
-            byte[] array = manager.LeerBytes(tam);
-            FileOutputStream fos = new FileOutputStream("data/fotoNueva3.jpg");
-            fos.write(array);
-            System.out.println(manager.Leer());
+            int totalSize = Integer.parseInt(manager.Leer());
+            byte[] buffer = new byte[totalSize];
+            int read = 0;
+            
+            while(read < totalSize)
+            {
+                    int bytesToRead = 0;
+                    if(((totalSize-read)/1024) >= 1)
+                            bytesToRead = 1024;
+                    else
+                            bytesToRead = totalSize - read;
+                    
+                    byte[] subBuffer = manager.LeerBytes(bytesToRead);//bytes
+                    
+                    
+                    for(int i = 0; i < subBuffer.length; i++)
+                    {
+                            buffer[read] = subBuffer[i];
+                            read++;
+                    }
+                    
+            }
+            manager.Leer();
+            System.out.println(manager.Leer());//transmited*/
 			
 			
 			

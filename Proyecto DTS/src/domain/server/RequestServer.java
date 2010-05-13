@@ -202,7 +202,24 @@ final class RequestServer implements Runnable {
 			  		
 			  		if(operation.equals("GET_PIC"))
 			  		{		
-			  			 String fileName = "data/images/street/imagen1.jpg";
+			  			
+			  			String fileName = "data/images/street/imagen1.jpg";
+                        File originalPhoto = new File(fileName);
+                        FileInputStream stream = new FileInputStream(originalPhoto);
+                        byte[] buffer = new byte[1024];
+                        long totalSize = originalPhoto.length();
+                        sockManager.Escribir("206 OK Loading image [" + Long.toString(totalSize)+ "] bytes..." + "\n");
+                        sockManager.Escribir(Long.toString(totalSize)+ "\n");
+                        int read = 0;
+                        for(read = stream.read(buffer); read !=-1; read = stream.read(buffer))
+                        {
+                                sockManager.EscribirBytes(buffer);
+        
+                        }
+                        
+                        sockManager.Escribir("\n" + "Photo transmited..." + "\n");
+                        state = 5;
+			  			 /*String fileName = "data/images/street/imagen1.jpg";
                          File originalPhoto = new File(fileName);
                          FileInputStream stream = new FileInputStream(originalPhoto);
                          byte[] buffer = new byte[(int)originalPhoto.length()];
@@ -212,7 +229,7 @@ final class RequestServer implements Runnable {
                          stream.read(buffer);
                          sockManager.EscribirBytes(buffer);
                          sockManager.Escribir("photo transmited" + "\n");
-                         state = 5;
+                         state = 5;*/
 			  		
 			  		}
 			  		
