@@ -383,7 +383,7 @@ public class sensorsGUI extends javax.swing.JFrame {
 		if(jButton2 == null) {
 			jButton2 = new JButton();
 			jButton2.setText(" ");
-			jButton2.setBounds(171, 12, 155, 38);
+			jButton2.setBounds(133, 5, 193, 47);
 			jButton2.setAction(getHistory());
 			jButton2.setIcon(new ImageIcon("data/images/buttons/history.png"));
 			jButton2.setContentAreaFilled(false);
