@@ -236,11 +236,11 @@ public class getPicGUI extends javax.swing.JFrame {
 					
 					try {
 						
-						manager.Escribir("GET_PIC" + "\n");
+						/*manager.Escribir("GET_PIC" + "\n");
                         
                         System.out.println(manager.Leer());
                         int totalSize = Integer.parseInt(manager.Leer());
-                        byte[] buffer = new byte[totalSize];
+                        buffer = new byte[totalSize];
                         int read = 0;
                         
                         while(read < totalSize)
@@ -262,14 +262,15 @@ public class getPicGUI extends javax.swing.JFrame {
                                 
                         }
                         manager.Leer();
-                        System.out.println(manager.Leer());//transmited*/
-                        picture.setIcon(new ImageIcon(buffer));
-						/*manager.Escribir("GET_PIC" + "\n");
+                        System.out.println(manager.Leer());//transmited
+                        picture.setIcon(new ImageIcon(buffer));*/
+                        
+						manager.Escribir("GET_PIC" + "\n");
 						System.out.println(manager.Leer());
 			            int tam =Integer.parseInt(manager.Leer());
 			            buffer = manager.LeerBytes(tam);
 			            System.out.println(manager.Leer());
-			            picture.setIcon(new ImageIcon(buffer));*/
+			            picture.setIcon(new ImageIcon(buffer));
 			            
 						manager.Escribir("GET_LOC" + "\n");
 						String response=manager.Leer();
