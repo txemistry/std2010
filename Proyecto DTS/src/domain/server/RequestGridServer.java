@@ -2,7 +2,6 @@ package domain.server;
 
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
-
 import DB.DBM;
 import domain.util.SocketManager;
 

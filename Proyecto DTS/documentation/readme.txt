@@ -11,4 +11,6 @@ These are the step to be taken:
     because in deed the client is an interface. The class that 
     we must run is ClientGUI and it’s located in the following 
     path: src/GUI/ClientGUI.java
+4.	As we use an access database we have to register it in 
+    the ODBC of windows. The database is in the path: data/data base/CarDB.mdb
 
