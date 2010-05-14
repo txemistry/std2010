@@ -6,17 +6,14 @@ import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.LayoutStyle;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
-import javax.swing.SwingUtilities;
 
 import domain.util.SocketManager;
 
@@ -34,6 +31,10 @@ import domain.util.SocketManager;
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
 public class menuGUI extends javax.swing.JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel background;
 	private JPanel center;
 	private AbstractAction gpsAction;
@@ -50,7 +51,7 @@ public class menuGUI extends javax.swing.JFrame {
 	private JPanel up;
 	private JPanel base;
 	private static menuGUI window;
-	private static SocketManager manager;
+	private SocketManager manager;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -77,6 +78,7 @@ public class menuGUI extends javax.swing.JFrame {
 		this.manager=manager;
 	}
 	
+	@SuppressWarnings("static-access")
 	public void setGUI(menuGUI window)
 	{
 		this.window=window;
@@ -203,6 +205,11 @@ public class menuGUI extends javax.swing.JFrame {
 	private AbstractAction getActionExit() {
 		if(actionExit == null) {
 			actionExit = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					try {
 						manager.Escribir("QUIT" + "\n");
@@ -236,6 +243,11 @@ public class menuGUI extends javax.swing.JFrame {
 	private AbstractAction getGpsAction() {
 		if(gpsAction == null) {
 			gpsAction = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					
 					gpsGUI gps= new gpsGUI(manager);
@@ -254,6 +266,11 @@ public class menuGUI extends javax.swing.JFrame {
 	private AbstractAction getPicAction() {
 		if(picAction == null) {
 			picAction = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					getPicGUI getPic= new getPicGUI(manager);
 					getPic.setGUI(getPic);
@@ -270,6 +287,11 @@ public class menuGUI extends javax.swing.JFrame {
 	private AbstractAction getSensorsAction() {
 		if(sensorsAction == null) {
 			sensorsAction = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					sensorsGUI sensor= new sensorsGUI(manager);
 					sensor.setGUI(sensor);

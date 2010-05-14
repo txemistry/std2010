@@ -2,20 +2,17 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.net.Socket;
-import java.net.UnknownHostException;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
-import javax.swing.SwingUtilities;
 
 import domain.util.SocketManager;
 
@@ -33,6 +30,10 @@ import domain.util.SocketManager;
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
 public class gpsGUI extends javax.swing.JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel background;
 	private JPanel center;
 	private JPanel east;
@@ -56,7 +57,7 @@ public class gpsGUI extends javax.swing.JFrame {
 	private JPanel down;
 	private JPanel up;
 	private static gpsGUI window;
-	private static SocketManager manager;
+	private SocketManager manager;
 	private AbstractAction offButton;
 
 	/**
@@ -85,6 +86,7 @@ public class gpsGUI extends javax.swing.JFrame {
 	}
 	
 	
+	@SuppressWarnings("static-access")
 	public void setGUI(gpsGUI window)
 	{
 		this.window=window;
@@ -163,6 +165,11 @@ public class gpsGUI extends javax.swing.JFrame {
 	private AbstractAction getExitAction() {
 		if(exitAction == null) {
 			exitAction = new AbstractAction("ONButton", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					try {
 						manager.Escribir("QUIT" + "\n");
@@ -181,6 +188,11 @@ public class gpsGUI extends javax.swing.JFrame {
 	private AbstractAction getBackAction() {
 		if(backAction == null) {
 			backAction = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					menuGUI menu = new menuGUI(manager);
 					menu.setVisible(true);
@@ -346,6 +358,11 @@ public class gpsGUI extends javax.swing.JFrame {
 	private AbstractAction getONButton() {
 		if(ONButton == null) {
 			ONButton = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) 
 				{
 					try {
@@ -366,6 +383,11 @@ public class gpsGUI extends javax.swing.JFrame {
 	private AbstractAction getOffButton() {
 		if(offButton == null) {
 			offButton = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					
 					try {

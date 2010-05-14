@@ -7,10 +7,10 @@ public final class CarServer
 {
 	public static void main(String argv[]) throws Exception
 	{
-		System.out.println("servidor padre funcionando");
+		System.out.println("CarServer working");
 		
 		// Set the port number.
-		int port = 3000;//(new Integer(argv[0])).intValue();
+		int port = 3000;
 
 		ServerSocket wellcomeSocket = new ServerSocket(port);
 
@@ -25,7 +25,7 @@ public final class CarServer
 			//Crear un Thread para el objeto HttpRequest
 			Thread t = new Thread(rs);
 
-			System.out.println("he creado un hijo");
+			System.out.println("I have created a requestServer child");
 		
 			//Arrancar el Thread
 			t.start();

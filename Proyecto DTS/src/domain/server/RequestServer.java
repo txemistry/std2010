@@ -151,7 +151,6 @@ final class RequestServer implements Runnable {
 			  		break;
 			  	}
 			  	
-			  	//METER EN CADA IF UN ELSE IF PARA PODER AL FINAL HACER UN  ELSE PARA EL COMANDO DESCONOCIDO
 			  	case 3:
 			  	{
 			  		if (operation.equals("LISTSENSOR"))
@@ -159,7 +158,6 @@ final class RequestServer implements Runnable {
 			  			sockManager.Escribir("112 OK start of sensor list" + "\n");
 			  			Vector<String> listSensors=DBM.getListSensors(ip);
 			  			int size=listSensors.size();
-			  			//Ahora deberiamos decirle oie, el vector tiene x elementos, y pasarselos
 			  			sockManager.Escribir(size + "\n");
 			  			for(int i = 0; i<size; i++)
 			  			{
@@ -216,7 +214,6 @@ final class RequestServer implements Runnable {
                                 sockManager.EscribirBytes(buffer);
         
                         }
-                        
                         sockManager.Escribir("\n" + "Photo transmited..." + "\n");
                         state = 5;*/
                         
@@ -249,8 +246,6 @@ final class RequestServer implements Runnable {
 			  			try
 			  			{
 			  				String sensorID = tokens.nextToken();
-			  				//tenemos que comprobar si el id del sensor, corresponde a un sensor
-			  				//del coche al que estamos conectados eso lo hace verifysensor
 			  				boolean validation = DBM.verifySensor(sensorID, ip);
 			  				
 			  				if (validation == true)
@@ -413,9 +408,7 @@ final class RequestServer implements Runnable {
 			  			//tenemos que comprobar si el GPS esta activado, si lo esta devolveremos las coordenadas,
 			  			//si esta descativado llamamos al servidor Grid
 			  			
-			  			System.out.println("estoy dentro de get loc");
 			  			boolean GPSState = DBM.getGPSState(ip);
-			  			System.out.println(GPSState);
 			  			if(GPSState == true)
 			  			{
 			  				//el GPS esta encendido
@@ -466,6 +459,7 @@ final class RequestServer implements Runnable {
     // Close streams and socket.
     sockManager.CerrarStreams();
     sockManager.CerrarSocket();
+    DBM.disconnectDB();
   }
   
 

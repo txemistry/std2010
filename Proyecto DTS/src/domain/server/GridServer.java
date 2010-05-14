@@ -11,7 +11,7 @@ public class GridServer {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		System.out.println("servidor padre grid funcionando");
+		System.out.println("GridServer working");
 		
 		// Set the port number.
 		int port = 3001;//(new Integer(argv[0])).intValue();
@@ -29,7 +29,7 @@ public class GridServer {
 			//Crear un Thread para el objeto HttpRequest
 			Thread t = new Thread(rs);
 
-			System.out.println("he creado un hijo de tipo Grid");
+			System.out.println("I have created a requestGridServer child");
 		
 			//Arrancar el Thread
 			t.start();

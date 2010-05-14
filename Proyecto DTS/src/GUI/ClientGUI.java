@@ -1,20 +1,13 @@
 package GUI;
 import java.awt.BorderLayout;
-import java.awt.Canvas;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 import javax.swing.AbstractAction;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -22,12 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
-
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.SwingUtilities;
 
 import domain.util.SocketManager;
 
@@ -66,7 +56,6 @@ public class ClientGUI extends javax.swing.JFrame {
 	private AbstractAction login;
 	private JButton conect;
 	private JLabel ipLabel;
-	private AbstractAction actionConect;
 	private JLabel statusBar;
 	private AbstractAction connect;
 	private JTextField ipText;
@@ -74,16 +63,11 @@ public class ClientGUI extends javax.swing.JFrame {
 	private JLabel Password;
 	private JLabel jLabel1;
 	private JTextField password;
-	private JTextField name;
 	private JButton loginBUtton;
 	private JPanel arriba;
 	private AbstractAction abstractAction1;
 	private JButton jButton2;
 	private JPanel baseComponents;
-	private AbstractAction exit = new AbstractAction("exit", null) {
-		public void actionPerformed(ActionEvent evt) {
-		}
-	};
 	private JPanel South;
 	private JPanel East;
 	private JPanel West;
@@ -206,20 +190,6 @@ public class ClientGUI extends javax.swing.JFrame {
 		}
 	}
 
-	private AbstractAction getExit() {
-		if(exit == null) {
-			exit = new AbstractAction("exit", null) {
-				public void actionPerformed(ActionEvent evt) {
-			
-					
-
-					
-					System.exit(0);
-				}
-			};
-		}
-		return exit;
-	}
 	
 	private JButton getJButton2() {
 		if(jButton2 == null) {
@@ -236,6 +206,11 @@ public class ClientGUI extends javax.swing.JFrame {
 	private AbstractAction getAbstractAction1() {
 		if(abstractAction1 == null) {
 			abstractAction1 = new AbstractAction("", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 7828558753203927061L;
+
 				public void actionPerformed(ActionEvent evt) {
 					try {
 						manager.Escribir("QUIT" + "\n");
@@ -414,9 +389,14 @@ public class ClientGUI extends javax.swing.JFrame {
 	private AbstractAction getLogin() {
 		if(login == null) {
 			login = new AbstractAction("", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) 
 				{
-					System.out.println("ESTOY EN LA ACCION DE LOGIN");
+				
 					String user= nameField.getText();
 					try {
 						manager.Escribir("USER "+user+"\n");
@@ -438,7 +418,6 @@ public class ClientGUI extends javax.swing.JFrame {
 								ipLabel.setEnabled(true);
 								ipText.setEnabled(true);
 								conect.setVisible(true);
-								System.out.println("Que lo he puesto a tru!!");
 							}
 						}
 					} catch (IOException e) {
@@ -457,6 +436,11 @@ public class ClientGUI extends javax.swing.JFrame {
 	private AbstractAction getConnect() {
 		if(connect == null) {
 			connect = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) 
 				{
 					try {

@@ -50,9 +50,6 @@ public class DBM {
 		ResultSet result = null;
 		boolean verifycation=false;
 		
-		//Create the Statement
-		
-
 		//Define the query
 		query = "SELECT * FROM USER WHERE USER = '" + user + "'";
 		

@@ -7,22 +7,20 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.DebugGraphics;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComponent;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import javax.swing.SwingUtilities;
 
 import domain.util.SocketManager;
 
@@ -40,6 +38,10 @@ import domain.util.SocketManager;
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
 public class sensorsGUI extends javax.swing.JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel background;
 	private JPanel center;
 	private JPanel two;
@@ -53,7 +55,6 @@ public class sensorsGUI extends javax.swing.JFrame {
 	private JTextField coordField;
 	private AbstractAction currentValue;
 	private JTextField horaField;
-	private AbstractAction getListAction;
 	private JButton jButton2;
 	private JButton jButton1;
 	private JTable table;
@@ -63,7 +64,7 @@ public class sensorsGUI extends javax.swing.JFrame {
 	private JPanel down;
 	private JPanel up;
 	private static sensorsGUI window;
-	private static SocketManager manager;
+	private SocketManager manager;
 	private JLabel jLabel5;
 	private JLabel jLabel4;
 	private JLabel dialog;
@@ -148,6 +149,7 @@ public class sensorsGUI extends javax.swing.JFrame {
 	
 	}
 	
+	@SuppressWarnings("static-access")
 	public void setGUI(sensorsGUI window)
 	{
 		this.window=window;
@@ -225,6 +227,11 @@ public class sensorsGUI extends javax.swing.JFrame {
 	private AbstractAction getExitAction() {
 		if(exitAction == null) {
 			exitAction = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					try {
 						manager.Escribir("QUIT" + "\n");
@@ -243,6 +250,11 @@ public class sensorsGUI extends javax.swing.JFrame {
 	private AbstractAction getBackAction() {
 		if(backAction == null) {
 			backAction = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					try {
 						manager.Escribir("RETURN" + "\n");
@@ -407,6 +419,11 @@ public class sensorsGUI extends javax.swing.JFrame {
 	private AbstractAction getCurrentValue() {
 		if(currentValue == null) {
 			currentValue = new AbstractAction("", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					statusBar.setText("");
 					try {
@@ -533,6 +550,11 @@ public class sensorsGUI extends javax.swing.JFrame {
 	private AbstractAction getHistory() {
 		if(history == null) {
 			history = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					statusBar.setText("");
 					cleanTable();
@@ -630,6 +652,11 @@ public class sensorsGUI extends javax.swing.JFrame {
 	private AbstractAction getON() {
 		if(ON == null) {
 			ON = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					statusBar.setText("");
 					try {
@@ -665,6 +692,11 @@ public class sensorsGUI extends javax.swing.JFrame {
 	private AbstractAction getOFF() {
 		if(OFF == null) {
 			OFF = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					statusBar.setText("");
 					try {

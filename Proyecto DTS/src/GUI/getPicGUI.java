@@ -7,15 +7,14 @@ import java.io.IOException;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
-import javax.swing.SwingUtilities;
 
 import domain.util.SocketManager;
 
@@ -33,6 +32,10 @@ import domain.util.SocketManager;
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
 public class getPicGUI extends javax.swing.JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel background;
 	private JPanel center;
 	private JLabel picture;
@@ -49,7 +52,7 @@ public class getPicGUI extends javax.swing.JFrame {
 	private JPanel down;
 	private JPanel up;
 	private static getPicGUI window;
-	private static SocketManager manager;
+	private SocketManager manager;
 	private byte[] buffer;
 
 	/**
@@ -76,6 +79,7 @@ public class getPicGUI extends javax.swing.JFrame {
 		super();
 		initGUI();
 	}
+	@SuppressWarnings("static-access")
 	public void setGUI(getPicGUI window)
 	{
 		this.window=window;
@@ -152,6 +156,11 @@ public class getPicGUI extends javax.swing.JFrame {
 	private AbstractAction getExitAction() {
 		if(exitAction == null) {
 			exitAction = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					try {
 						manager.Escribir("QUIT" + "\n");
@@ -170,6 +179,11 @@ public class getPicGUI extends javax.swing.JFrame {
 	private AbstractAction getBackAction() {
 		if(backAction == null) {
 			backAction = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 
 					menuGUI menu = new menuGUI(manager);
@@ -231,6 +245,11 @@ public class getPicGUI extends javax.swing.JFrame {
 	private AbstractAction getPicAction() {
 		if(picAction == null) {
 			picAction = new AbstractAction(" ", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					statusBar.setText("");
 					
@@ -313,11 +332,16 @@ public class getPicGUI extends javax.swing.JFrame {
 	private AbstractAction getSaveImgAction() {
 		if(saveImgAction == null) {
 			saveImgAction = new AbstractAction("", null) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent evt) {
 					statusBar.setText("");
 					FileOutputStream fos;
 					try {
-						fos = new FileOutputStream("data/xx3.jpg");
+						fos = new FileOutputStream("data/ImageTaken.jpg");
 						try {
 							fos.write(buffer);
 							statusBar.setText("Image successfully saved in your data folder");

@@ -14,6 +14,7 @@ public class SocketManager {
     public SocketManager(Socket sock) throws IOException {
         this.mySocket = sock;
         InicializaStreams();
+
     }
 
     /**
@@ -26,6 +27,7 @@ public class SocketManager {
         mySocket = new Socket(address, port);
         InicializaStreams();
     }
+   
 
     /**
      *
