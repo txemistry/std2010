@@ -587,13 +587,11 @@ public class sensorsGUI extends javax.swing.JFrame {
 								for(int i=0;i<size2;i++)
 								{
 									resultado = manager.Leer();
-									System.out.println("Resultado "+i+": "+resultado);
 									String[] values=resultado.split(";");
 			
 									tablareh.setNumRows(size2);
 									for (int x=0; x<values.length; x++)
 									{
-										System.out.println("Voy a meter "+values[x]+" en fila "+i+" y columna "+x);
 										tablareh.setValueAt(values[x],i,x);
 									}
 								}
